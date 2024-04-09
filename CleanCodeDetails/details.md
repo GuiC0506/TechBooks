@@ -76,3 +76,8 @@
 23. "Tríades...pense bem"
 24. "Se precisar de mais de dois ou três parâmetros, pode ser que aqueles parâmetros mereçam um objeto para eles"
 25. "Funções mônades devem formar um belo par verbo-substantivo entre o nome do método e o nome do parâmetro"
+26. "Números variáveis de parâmetros com o operador '...' contam como um parâmetro apenas"
+27. "Evite efeitos colaterais, que é quando sua função faz coisas escondida. Isso cria acoplamentos temporários, que são perigosos"
+28. "Uma função deve fazer ou responder a algo. Mas não ambos. Separação entre comando e consulta"
+29. "Prefira exceções ao invés de enumeradores com código de erro. Isso leva a estruturas aninhadas"
+30. "Blocos try catch merecem uma função para eles e exclusivamente para isso, para não misturar a lógica de processamento com a lógica de tratamento de erros"
