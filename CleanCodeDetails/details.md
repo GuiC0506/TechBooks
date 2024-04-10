@@ -81,3 +81,6 @@
 28. "Uma função deve fazer ou responder a algo. Mas não ambos. Separação entre comando e consulta"
 29. "Prefira exceções ao invés de enumeradores com código de erro. Isso leva a estruturas aninhadas"
 30. "Blocos try catch merecem uma função para eles e exclusivamente para isso, para não misturar a lógica de processamento com a lógica de tratamento de erros"
+31. "Dependência magnética: é quando muitas classes dependem de uma classe. Isso cria uma pressão negativa em cima dessa classe, como por exemplo, enums com código de erro. Isso é ruim"
+32. "A duplicação pode ser a raíz de todo o mal no software"
+33. "Construir software deve ser visto como histórias a serem contadas, e não como programas a serem escritos"
