@@ -8,7 +8,7 @@ export default class ParkingLotRepositoryMemory implements ParkingLotRepository 
     parkingLots = [
         {
             code: "shopping",
-            capacity: 100,
+            capacity: 5,
             openHour: 8,
             closeHour: 22,
         }

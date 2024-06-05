@@ -10,12 +10,16 @@ export default class ParkingLot {
         this.capacity = capacity;
         this.openHour = openHour;
         this.closeHour = closeHour;
-        this.occupiedSpaces = 0;
+        this.occupiedSpaces = occupiedSpaces;
     }
 
     isOpen(date: Date) {
         const hour = date.getHours();
         return (hour >= this.openHour && hour <= this.closeHour);
+    }
+
+    isFull() {
+        return this.capacity === this.occupiedSpaces;
     }
 
 }

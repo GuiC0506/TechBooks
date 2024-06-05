@@ -12,8 +12,8 @@ export default class EnterParkingLot {
         const parkingLot = await this.parkingLotRepository.getParkingLot(code);
         const parkedCar = new ParkedCar(code, plate, date);
         if (!parkingLot.isOpen(parkedCar.date)) throw new Error("The parking lot is closed");
-        console.log(parkedCar);
-        await this.parkingLotRepository.saveParkedCar(parkedCar);
+        if (parkingLot.isFull()) throw new Error("The parking lot is full")
+        this.parkingLotRepository.saveParkedCar(parkedCar);
         return parkingLot;
     }
 }
