@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "main": "npx tsc && node ./dist/main.js"
+        "main": "npx tsc && node ./dist/main.js",
+        "test": "npx tsc && jest ./dist"
     },
     "keywords": [],
     "author": "",
