@@ -14,5 +14,9 @@
         "@types/jest": "^29.5.12",
         "jest": "^29.7.0",
         "typescript": "^5.4.5"
+    },
+    "dependencies": {
+        "express": "^4.19.2",
+        "pg-promise": "^11.8.0"
     }
 }

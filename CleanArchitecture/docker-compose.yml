@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - "5436:5432"
+    environment:
+      POSTGRES_PASSWORD: admin 
+      POSTGRES_USER: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data 
+ 
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+ 
+volumes:
+  pgdata:

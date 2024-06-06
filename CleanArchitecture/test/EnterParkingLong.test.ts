@@ -114,7 +114,6 @@ test("Should be full", async function() {
     ).rejects.toThrow(new Error("The parking lot is full"));
 })
 
-
 test("Should return three parking lots", async function() {
     const parkingLotRepository = new ParkingLotRepositoryMemory();
     const listParkingLots = new ListParkingLots(parkingLotRepository);
