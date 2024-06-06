@@ -11,7 +11,13 @@ test("Should enter parking lot", async function() {
     const getParkingLot = new GetParkingLot(parkingLotRepositoryMemory);
     const parkingLotBeforeEnter = await getParkingLot.execute("shopping");
     expect(parkingLotBeforeEnter.occupiedSpaces).toBe(0);
-    await enterParkingLot.execute("shopping", "FBC-4490", new Date("2024-05-06T09:55:00"));
+
+    const enterParkingLotInput1 = {
+        code: "shopping",
+        plate: "FBC-4491",
+        date: new Date("2024-05-06T09:00:00")
+    }
+    await enterParkingLot.execute(enterParkingLotInput1);
     const parkingLotAfterEnter = await getParkingLot.execute("shopping");
     expect(parkingLotAfterEnter.occupiedSpaces).toBe(1);
 })
@@ -22,7 +28,13 @@ test("Should be closed", async function() {
     const getParkingLot = new GetParkingLot(parkingLotRepositoryMemory);
     const parkingLotBeforeEnter = await getParkingLot.execute("shopping");
     expect(parkingLotBeforeEnter.occupiedSpaces).toBe(0);
-    await enterParkingLot.execute("shopping", "FBC-4490", new Date("2024-05-06T23:00:00"));
+
+    const enterParkingLotInput1 = {
+        code: "shopping",
+        plate: "FBC-4491",
+        date: new Date("2024-05-06T09:00:00")
+    }
+    await enterParkingLot.execute(enterParkingLotInput1);
 })
 
 test("Should be full", async function() {
@@ -31,13 +43,45 @@ test("Should be full", async function() {
     const getParkingLot = new GetParkingLot(parkingLotRepositoryMemory);
     const parkingLotBeforeEnter = await getParkingLot.execute("shopping");
     expect(parkingLotBeforeEnter.occupiedSpaces).toBe(0);
-    await enterParkingLot.execute("shopping", "FBC-4490", new Date("2024-05-06T09:00:00"));
-    await enterParkingLot.execute("shopping", "FBC-4491", new Date("2024-05-06T09:00:00"));
-    await enterParkingLot.execute("shopping", "FBC-4492", new Date("2024-05-06T09:00:00"));
-    await enterParkingLot.execute("shopping", "FBC-4493", new Date("2024-05-06T09:00:00"));
-    await enterParkingLot.execute("shopping", "FBC-4494", new Date("2024-05-06T09:00:00"));
+
+    const enterParkingLotInput1 = {
+        code: "shopping",
+        plate: "FBC-4491",
+        date: new Date("2024-05-06T09:00:00")
+    }
+    const enterParkingLotInput2 = {
+        code: "shopping",
+        plate: "FBC-4492",
+        date: new Date("2024-05-06T09:00:00")
+    }
+    const enterParkingLotInput3 = {
+        code: "shopping",
+        plate: "FBC-4493",
+        date: new Date("2024-05-06T09:00:00")
+    }
+    const enterParkingLotInput4 = {
+        code: "shopping",
+        plate: "FBC-4494",
+        date: new Date("2024-05-06T09:00:00")
+    }
+    const enterParkingLotInput5 = {
+        code: "shopping",
+        plate: "FBC-4495",
+        date: new Date("2024-05-06T09:00:00")
+    }
+
+    const enterParkingLotInput6 = {
+        code: "shopping",
+        plate: "FBC-4496",
+        date: new Date("2024-05-06T09:00:00")
+    }
+    await enterParkingLot.execute(enterParkingLotInput1);
+    await enterParkingLot.execute(enterParkingLotInput2);
+    await enterParkingLot.execute(enterParkingLotInput3);
+    await enterParkingLot.execute(enterParkingLotInput4);
+    await enterParkingLot.execute(enterParkingLotInput5);
     expect(() =>
-        enterParkingLot.execute("shopping", "FBC-4495", new Date("2024-05-06T09:00:00"))
+        enterParkingLot.execute(enterParkingLotInput6)
     ).rejects.toThrow(new Error("The parking lot is full"));
 })
 

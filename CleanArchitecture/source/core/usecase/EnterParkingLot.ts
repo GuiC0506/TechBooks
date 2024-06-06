@@ -8,12 +8,24 @@ export default class EnterParkingLot {
         this.parkingLotRepository = parkingLotRepository;
     }
     // use cases are executed
-    async execute(code: string, plate: string, date: Date) {
-        const parkingLot = await this.parkingLotRepository.getParkingLot(code);
-        const parkedCar = new ParkedCar(code, plate, date);
+    async execute(input: Input): Promise<Output> {
+        const parkingLot = await this.parkingLotRepository.getParkingLot(input.code);
+        const parkedCar = new ParkedCar(input.code, input.plate, input.date);
         if (!parkingLot.isOpen(parkedCar.date)) throw new Error("The parking lot is closed");
         if (parkingLot.isFull()) throw new Error("The parking lot is full")
         this.parkingLotRepository.saveParkedCar(parkedCar);
-        return parkingLot;
+        return {
+            plate: parkedCar.plate
+        };
     }
+}
+
+type Input = {
+    code: string,
+    plate: string,
+    date: Date
+}
+
+type Output = {
+    plate: string
 }
