@@ -1,6 +1,7 @@
 import ParkingLot from "../source/core/entity/ParkingLot";
 import EnterParkingLot from "../source/core/usecase/EnterParkingLot";
 import GetParkingLot from "../source/core/usecase/GetParkingLot";
+import LeaveParkingLot from "../source/core/usecase/LeaveParkingLot";
 import ListParkingLots from "../source/core/usecase/ListParkingLot";
 import ParkingLotRepositoryMemory from "../source/infra/repository/ParkingLotRepositoryMemory";
 
@@ -22,6 +23,21 @@ test("Should enter parking lot", async function() {
     expect(parkingLotAfterEnter.occupiedSpaces).toBe(1);
 })
 
+test("Should leave parking lot", async function() {
+    const parkingLotRepositoryMemory = new ParkingLotRepositoryMemory();
+    const enterParkingLot = new EnterParkingLot(parkingLotRepositoryMemory);
+    const leaveParkingLot = new LeaveParkingLot(parkingLotRepositoryMemory);
+    const enterParkingLotInput1 = {
+        code: "shopping",
+        plate: "FBC-4491",
+        date: new Date("2024-05-06T09:00:00")
+    }
+    enterParkingLot.execute(enterParkingLotInput1);
+    leaveParkingLot.execute(enterParkingLotInput1.plate);
+    const parkedCars = await parkingLotRepositoryMemory.listParkedCars();
+    expect(parkedCars).not.toContain(enterParkingLotInput1.plate);
+})
+
 test("Should be closed", async function() {
     const parkingLotRepositoryMemory = new ParkingLotRepositoryMemory();
     const enterParkingLot = new EnterParkingLot(parkingLotRepositoryMemory);
@@ -35,6 +51,19 @@ test("Should be closed", async function() {
         date: new Date("2024-05-06T09:00:00")
     }
     await enterParkingLot.execute(enterParkingLotInput1);
+})
+
+test("Should return plate FBC-4491", async function() {
+    const parkingLotRepositoryMemory = new ParkingLotRepositoryMemory();
+    const enterParkingLot = new EnterParkingLot(parkingLotRepositoryMemory);
+    const enterParkingLotInput1 = {
+        code: "shopping",
+        plate: "FBC-4491",
+        date: new Date("2024-05-06T09:00:00")
+    }
+
+    const parkedCarPlate = await enterParkingLot.execute(enterParkingLotInput1);
+    expect(parkedCarPlate.plate).toBe(enterParkingLotInput1.plate);
 })
 
 test("Should be full", async function() {
