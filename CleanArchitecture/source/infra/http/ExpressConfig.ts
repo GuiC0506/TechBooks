@@ -1,17 +1,10 @@
-import Express, { Request, Response } from "express"
-import GetParkingLot from "../../core/usecase/GetParkingLot";
-import ParkingLotRepositoryMemory from "../repository/ParkingLotRepositoryMemory";
+import Express from "express"
 import ExpressAdapter from "../../adapter/ExpressAdapter";
 import ParkingLotController from "../../controller/ParkingLotController";
+
 const app = Express();
-
-app.get("/parkingLots1/:code", async function(req: Request, res: Response) {
-    const parkingLotRepository = new ParkingLotRepositoryMemory();
-    const getParkingLot = new GetParkingLot(parkingLotRepository);
-    const parkingLot = await getParkingLot.execute("shopping");
-    return res.json(parkingLot);
-})
-
+// the controller is not coupled to the http framework. This is beautiful
+// the http adapters adapters http libs to your controllers, so that the controller don't need to change
+// the controller enters in the core, interacts with the use cases
 app.get("/parkingLots2/:code", ExpressAdapter.create(ParkingLotController.getParkingLot));
-
 app.listen(3000);
