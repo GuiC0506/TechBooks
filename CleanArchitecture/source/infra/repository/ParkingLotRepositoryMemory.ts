@@ -5,13 +5,17 @@ import ParkingLotRepository from "../../core/repository/ParkingLotRepository";
 
 export default class ParkingLotRepositoryMemory implements ParkingLotRepository {
 
-    parkingLots = [
-        {
-            code: "shopping",
-            capacity: 5,
-            openHour: 8,
-            closeHour: 22,
-        }
+    parkingLots: ParkingLot[] = [
+        new ParkingLot("shopping",
+            5,
+            8,
+            22,
+            0),
+        new ParkingLot("airport",
+            10,
+            8,
+            22,
+            0)
     ]
     public parkedCars: ParkedCar[] = []
 
@@ -32,5 +36,9 @@ export default class ParkingLotRepositoryMemory implements ParkingLotRepository 
 
     async saveParkedCar(parkedCar: ParkedCar): Promise<void> {
         this.parkedCars.push(parkedCar);
+    }
+
+    async listParkingLots(): Promise<ParkingLot[]> {
+        return await this.parkingLots;
     }
 }
