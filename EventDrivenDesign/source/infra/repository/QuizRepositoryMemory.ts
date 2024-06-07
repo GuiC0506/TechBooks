@@ -1,7 +1,7 @@
-import Answer from "../domain/entity/Answer";
-import Question from "../domain/entity/Question";
-import Quiz from "../domain/entity/Quiz";
-import QuizRepository from "../domain/repository/QuizRepository";
+import Answer from "../../domain/entity/Answer";
+import Question from "../../domain/entity/Question";
+import Quiz from "../../domain/entity/Quiz";
+import QuizRepository from "../../domain/repository/QuizRepository";
 
 export default class QuizRepositoryMemory implements QuizRepository {
     quizzes: Quiz[];

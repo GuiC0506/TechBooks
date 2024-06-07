@@ -1,6 +1,6 @@
-import Answer from "../source/core/entity/Answer";
-import Question from "../source/core/entity/Question";
-import Quiz from "../source/core/entity/Quiz";
+import Answer from "../source/domain/entity/Answer";
+import Question from "../source/domain/entity/Question";
+import Quiz from "../source/domain/entity/Quiz";
 
 test("Should create a quiz", function() {
     const questions: Question[] = [
