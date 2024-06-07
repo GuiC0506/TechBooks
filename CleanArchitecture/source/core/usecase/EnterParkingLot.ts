@@ -2,6 +2,8 @@ import ParkedCar from "../entity/ParkedCar";
 import ParkingLotRepository from "../repository/ParkingLotRepository";
 
 // use cases are independent
+// abstracts funcionality, orchestrates entities
+// it protects itself from external resources via the adapters
 export default class EnterParkingLot {
     parkingLotRepository: ParkingLotRepository;
     constructor(parkingLotRepository: ParkingLotRepository) {
