@@ -1,4 +1,3 @@
-import Answer from "../entity/Answer";
 import DomainEvent from "./DomainEvent";
 
 export default class QuizSubmitted implements DomainEvent {
@@ -6,6 +5,7 @@ export default class QuizSubmitted implements DomainEvent {
     constructor
         (
             readonly quizId: number,
+            readonly userName: string,
             readonly email: string,
             readonly answers: { [id: number]: string }
         ) { }
