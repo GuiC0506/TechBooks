@@ -20,7 +20,7 @@ class QuizCorrectorHandler {
             }
         }
         const grade = ((score / quiz.questions.length) * 100);
-        const quizCorrected = new QuizCorrected_1.default(event.userName, event.email, grade);
+        const quizCorrected = new QuizCorrected_1.default(event.userName, event.notificationType, event.email, event.phone, grade);
         this.mediator.publish(quizCorrected);
     }
 }

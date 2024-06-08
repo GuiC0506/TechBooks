@@ -9,7 +9,7 @@ class SubmitQuiz {
         this.mediator = mediator;
     }
     async execute(input) {
-        const event = new QuizSubmitted_1.default(input.quizId, input.name, input.email, input.answers);
+        const event = new QuizSubmitted_1.default(input.quizId, input.notificationType, input.name, input.email, input.phone, input.answers);
         this.mediator.publish(event);
     }
 }
