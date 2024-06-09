@@ -7,10 +7,6 @@ export default class SignUp {
     ) { }
 
     async execute(input: Input): Promise<void> {
-        if (input.name.split(" ").length < 2) throw new Error("Invalid username");
-        if (!String(input.email).toLowerCase().match(
-            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-        )) throw new Error("Invalid email");
         const user = new User(input.name, input.email, input.password, input.age);
         this.userRepository.save(user);
     }
