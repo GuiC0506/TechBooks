@@ -20,7 +20,7 @@ test("Should not create a user with invalid name", async function() {
         "churros@gmail.com",
         "churros123",
         19
-    )).toThrow(new Error("Invalid username"));
+    )).toThrow(new Error("Invalid parameter"));
 })
 
 test("Should not create a user with invalid email", async function() {
@@ -29,7 +29,7 @@ test("Should not create a user with invalid email", async function() {
         "churros@gmail",
         "churros123",
         19
-    )).toThrow(new Error("Invalid email"));
+    )).toThrow(new Error("Invalid parameter"));
 })
 
 test("Should not create a user with invalid password", async function() {
@@ -38,7 +38,7 @@ test("Should not create a user with invalid password", async function() {
         "churros@gmail.com",
         "chur",
         19
-    )).toThrow(new Error("Invalid password"));
+    )).toThrow(new Error("Invalid parameter"));
 })
 
 test("Should not create a user with invalid age", async function() {
@@ -47,5 +47,5 @@ test("Should not create a user with invalid age", async function() {
         "churros@gmail.com",
         "churros123",
         8
-    )).toThrow(new Error("Invalid age"));
+    )).toThrow(new Error("Invalid parameter"));
 })

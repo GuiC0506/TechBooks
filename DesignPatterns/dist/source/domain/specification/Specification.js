@@ -1,13 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class TestInterface {
-    isSatisfiedBy(t) {
-        console.log(t);
-        return true;
-    }
+exports.AndSpecification = exports.AbstractSpecification = void 0;
+class AbstractSpecification {
     and(other) {
-        return this;
+        return new AndSpecification(this, other);
     }
 }
-const x = new TestInterface();
-x.isSatisfiedBy(5);
+exports.AbstractSpecification = AbstractSpecification;
+class AndSpecification extends AbstractSpecification {
+    constructor(left, right) {
+        super();
+        this.left = left;
+        this.right = right;
+    }
+    isSatisfiedBy(t) {
+        return this.left.isSatisfiedBy(t) && this.right.isSatisfiedBy(t);
+    }
+}
+exports.AndSpecification = AndSpecification;
