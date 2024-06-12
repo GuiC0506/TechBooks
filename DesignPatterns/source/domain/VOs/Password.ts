@@ -16,4 +16,12 @@ export default class Password {
             })
         })
     }
+
+    async validate(plainPassword: string) {
+        return new Promise((resolve) => {
+            pbkdf2(plainPassword, this.salt, 100, 64, "sha512", (err, value) => {
+                resolve(this.value === value.toString("hex"));
+            })
+        })
+    }
 }

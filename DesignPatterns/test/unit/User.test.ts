@@ -2,7 +2,7 @@ import User from "../../source/domain/entity/User"
 
 // test pyramid: unit > integration > e2e
 test("Should create a user", async function() {
-    const user = User.create(
+    const user = await User.create(
         "Churros Augusto",
         "churros@gmail.com",
         "churros123",
@@ -10,7 +10,7 @@ test("Should create a user", async function() {
     );
     expect(user.name.getValue()).toBe("Churros Augusto");
     expect(user.email.getValue()).toBe("churros@gmail.com");
-    expect(user.password).toBe("churros123");
+    expect(user.password.value).toBe("ba69a051d5be72ae5ccdf29df37040a912edc500d6de636480d841f037c834f5ae3c99ed63324a068ea5ca854937f3a25161bf0d58693a83f5a92b4df98fd27b");
     expect(user.age).toBe(19);
 })
 
@@ -20,7 +20,7 @@ test("Should not create a user with invalid name", async function() {
         "churros@gmail.com",
         "churros123",
         19
-    )).toThrow(new Error("Invalid name"));
+    )).rejects.toThrow(new Error("Invalid name"));
 })
 
 test("Should not create a user with invalid email", async function() {
@@ -29,7 +29,7 @@ test("Should not create a user with invalid email", async function() {
         "churros@gmail",
         "churros123",
         19
-    )).toThrow(new Error("Invalid email"));
+    )).rejects.toThrow(new Error("Invalid email"));
 })
 
 test("Should not create a user with invalid password", async function() {
@@ -38,7 +38,7 @@ test("Should not create a user with invalid password", async function() {
         "churros@gmail.com",
         "chur",
         19
-    )).toThrow(new Error("Invalid password"));
+    )).rejects.toThrow(new Error("Invalid password"));
 })
 
 test("Should not create a user with invalid age", async function() {
@@ -47,5 +47,5 @@ test("Should not create a user with invalid age", async function() {
         "churros@gmail.com",
         "churros123",
         8
-    )).toThrow(new Error("Invalid age"));
+    )).rejects.toThrow(new Error("Invalid age"));
 })
