@@ -8,7 +8,7 @@ class UserRepositoryMemory {
         this.users.push(user);
     }
     async getByEmail(email) {
-        return this.users.find(user => user.email === email);
+        return this.users.find(user => user.email.getValue() === email);
     }
 }
 exports.default = UserRepositoryMemory;

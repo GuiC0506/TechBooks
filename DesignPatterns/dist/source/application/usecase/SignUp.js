@@ -9,7 +9,7 @@ class SignUp {
         this.userRepository = userRepository;
     }
     async execute(input) {
-        const user = new User_1.default(input.name, input.email, input.password, input.age);
+        const user = User_1.default.create(input.name, input.email, input.password, input.age);
         this.userRepository.save(user);
     }
 }

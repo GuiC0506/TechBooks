@@ -31,5 +31,5 @@ test("Should not signup if name is invalid", async function () {
         age: 20
     };
     const signupAction = async () => await signup.execute(input);
-    expect(signupAction).rejects.toThrow(new Error("Invalid username"));
+    expect(signupAction).rejects.toThrow(new Error("Invalid name"));
 });
