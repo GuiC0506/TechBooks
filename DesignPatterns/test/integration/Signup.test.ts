@@ -15,7 +15,7 @@ test("Should signup", async function() {
     await signup.execute(input);
     const output = await login.execute({ email: input.email, password: input.password });
     expect(output.name).toBe("churros augusto");
-    expect(output.token).toBe("123456")
+    expect(output.token).toBe("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNodXJyb3NAZ21haWwuY29tIiwiaWF0IjoxNjc3Njc1NjAwMDAwLCJleHBpcmVzSW4iOjEwMDAwMH0.wHKb2qHoCiDqgbSO6qxoOfRg8lC9IEZ-wpUKFTyfM7Y")
 })
 
 test("Should not signup if name is invalid", async function() {
